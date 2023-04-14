@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Disease Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-3 text-xl">Heart Disease Prediction</span>
+            </a>
+            <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+            </nav>
+            <a href={{url_for("home")}}><button type="button"
+                    class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Home
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </a>
+        </div>
+    </header>
+    <div
+        class="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
+        <div class="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl"
+            aria-hidden="true">
+            <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#ff80b5] to-[#9089fc] opacity-30"
+                style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)">
+            </div>
+        </div>
+        <div class="absolute left-[max(45rem,calc(50%+8rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl"
+            aria-hidden="true">
+            <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#ff80b5] to-[#9089fc] opacity-30"
+                style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)">
+            </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 ">
+            <p class="text-sm leading-6 text-gray-900">
+                <svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
+                </svg>Enter the Patient's Clinical attributes
+            </p>
+        </div>
+        <div class="flex flex-1 justify-end"> </div>
+    </div>
+
+    <form action="{{url_for('pred')}}" class="w-full mx-auto px-3 mt-4 " method="POST">
+        <div class="flex flex-wrap -mx-3 mb-6 transition-all ease-in duration-1000">
+            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-age">
+                    Age
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-age" type="number" name="age" placeholder="Age" required>
+                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-sex">
+                    Sex
+                </label>
+                <select
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-sex" name="sex" required>
+                    <option disabled selected value> -- Select an Option -- </option>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-cp">
+                    Chest Pain Type
+                </label>
+                <select
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-cp" name="cp" required>
+                    <option disabled selected value> -- Select an Option -- </option>
+                    <option value="0">Typical Angina</option>
+                    <option value="1">Atypical Angina</option>
+                    <option value="2">Non-anginal Pain</option>
+                    <option value="3">Asymptomatic</option>
+                </select>
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-trestbps">
+                    Resting Blood Pressure in mm Hg
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-trestbps" name="trestbps" type="number" placeholder="trestbps" required>
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-chol">
+                    Serum Cholestrol in mg/dl
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-chol" name="chol" type="number" placeholder="chol" required>
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-fbs">
+                    Fasting Blood Sugar
+                </label>
+                <select
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-fbs" name="fbs" required>
+                    <option disabled selected value> -- Select an Option -- </option>
+                    <option value="0">False</option>
+                    <option value="1">True</option>
+                </select>
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-restecg">
+                    Resting ECG:
+                </label>
+                <select
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-restecg" name="restecg" required>
+                    <option disabled selected value> -- Select an Option -- </option>
+                    <option value="0">Normal</option>
+                    <option value="1">Having ST-T wave abnormality </option>
+                    <option value="2"> Probable or definite left ventricular hypertrophy </option>
+                </select>
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-thalach">
+                    Maximum Heart Rate
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-thalach" type="number" name="thalach" placeholder="thalach" required>
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-exang">
+                    ST Depression Induced
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-exang" name="exang" type="number" placeholder="exang" required>
+            </div>
+            <div class="w-full md:w-full px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-oldpeak">
+                    Exercise Induced Angina
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-oldpeak" name="oldpeak" type="number" step="any" placeholder="oldpeak" required>
+            </div>
+
+        </div>
+        <div class="flex flex-wrap -mx-3 mb-2">
+            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-slope">
+                    Slope of the Peak Exercise ST Segment
+                </label>
+                <select
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-slope" name="slope" required>
+                    <option disabled selected value> -- Select an Option -- </option>
+                    <option value="0">Upsloping</option>
+                    <option value="1">Flat</option>
+                    <option value="2">Downsloping</option>
+                </select>
+            </div>
+            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-ca">
+                    Number of Vessels Colored by Flourosopy
+                </label>
+                <select
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-ca" name="ca" required>
+                    <option disabled selected value> -- Select an Option -- </option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-thal">
+                    Thalassemia
+                </label>
+                <select
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-thal" name="thal" required>
+                    <option disabled selected value> -- Select an Option -- </option>
+                    <option value="1">Normal</option>
+                    <option value="2">Fixed defect</option>
+                    <option value="3">Reversable defect</option>
+                </select>
+            </div>
+        </div>
+        <button value="predict" onclick="show()"
+            class="bg-blue-500 my-4 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Predict
+        </button>
+        <p id="prediction" style="display: none;">{{ prediction_text }}</p>
+    </form>
+
+    <script>
+        function show() {
+            var prediction = document.querySelector("#prediction").textContent;
+            alert(prediction);
+        }
+    </script>
+</body>
+
+</html>

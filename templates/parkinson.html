@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Disease Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-3 text-xl">Parkinson's Disease Prediction</span>
+            </a>
+            <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+            </nav>
+            <a href={{url_for("home")}}> <button type="button"
+                    class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Home
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </a>
+        </div>
+    </header>
+    <div
+        class="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
+        <div class="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl"
+            aria-hidden="true">
+            <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#ff80b5] to-[#9089fc] opacity-30"
+                style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)">
+            </div>
+        </div>
+        <div class="absolute left-[max(45rem,calc(50%+8rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl"
+            aria-hidden="true">
+            <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#ff80b5] to-[#9089fc] opacity-30"
+                style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)">
+            </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 ">
+            <p class="text-sm leading-6 text-gray-900">
+                <svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
+                </svg>Enter the Patient's Clinical attributes
+            </p>
+        </div>
+        <div class="flex flex-1 justify-end"> </div>
+    </div>
+    <form action="{{url_for('parkin')}}" class="w-full mx-auto px-3 mt-4" method="POST">
+        <div class="flex flex-wrap -mx-3 mb-6 transition-all ease-in duration-1000">
+            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="grid-MDVP:Fo(Hz)">
+                    MDVP:Fo(Hz)
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-MDVP:Fo(Hz)" type="number" step="any" name="MDVP:Fo(Hz)" placeholder="MDVP:Fo(Hz)">
+                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="grid-MDVP:Fhi(Hz)">
+                    MDVP:Fhi(Hz)
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-MDVP:Fhi(Hz)" step="any" type="number" name="MDVP:Fhi(Hz)" placeholder="MDVP:Fhi(Hz)">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="grid-MDVP:Flo(Hz)">
+                    MDVP:Flo(Hz)
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-MDVP:Flo(Hz)" step="any" type="number" name="MDVP:Flo(Hz)" placeholder="MDVP:Flo(Hz)">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="grid-MDVP:Jitter(%)">
+                    MDVP:Jitter(%)
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-MDVP:Jitter(%)" name="MDVP:Jitter(%)" type="number" placeholder="MDVP:Jitter(%)"
+                    step="any">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="grid-MDVP:Jitter(Abs)">
+                    MDVP:Jitter(Abs)
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-MDVP:Jitter(Abs)" name="MDVP:Jitter(Abs)" type="number" placeholder="MDVP:Jitter(Abs)"
+                    step="any">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-MDVP:RAP">
+                    MDVP:RAP
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-MDVP:RAP" name="MDVP:RAP" type="number" step="any" placeholder="MDVP:RAP">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-MDVP:PPQ">
+                    MDVP:PPQ
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-MDVP:PPQ" name="MDVP:PPQ" type="number" step="any" placeholder="MDVP:PPQ">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-Jitter:DDP">
+                    Jitter:DDP
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-Jitter:DDP" name="Jitter:DDP" type="number" step="any" placeholder="Jitter:DDP">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="grid-MDVP:Shimmer">
+                    MDVP:Shimmer
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-MDVP:Shimmer" name="MDVP:Shimmer" type="number" step="any" placeholder="MDVP:Shimmer">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="grid-MDVP:Shimmer(dB)">
+                    MDVP:Shimmer(dB)
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-MDVP:Shimmer(dB)" name="MDVP:Shimmer(dB)" type="number" step="any"
+                    placeholder="MDVP:Shimmer(dB)">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="grid-Shimmer:APQ3">
+                    Shimmer:APQ3
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-Shimmer:APQ3" name="Shimmer:APQ3" type="number" step="any" placeholder="Shimmer:APQ3">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="grid-Shimmer:APQ5">
+                    Shimmer:APQ5
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-Shimmer:APQ5" name="Shimmer:APQ5" type="number" step="any" placeholder="Shimmer:APQ5">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-MDVP:APQ">
+                    MDVP:APQ
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-MDVP:APQ" name="MDVP:APQ" type="number" step="any" placeholder="MDVP:APQ">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="grid-Shimmer:DDA">
+                    Shimmer:DDA
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-Shimmer:DDA" name="Shimmer:DDA" type="number" step="any" placeholder="Shimmer:DDA">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-NHR">
+                    NHR
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-NHR" name="NHR" type="number" step="any" placeholder="NHR">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-HNR">
+                    HNR
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-HNR" name="HNR" type="number" step="any" placeholder="HNR">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-RPDE">
+                    RPDE
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-RPDE" name="RPDE" type="number" step="any" placeholder="RPDE">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-DFA">
+                    DFA
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-DFA" name="DFA" type="number" step="any" placeholder="DFA">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-spread1">
+                    spread1
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-spread1" name="spread1" type="number" step="any" placeholder="spread1">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-spread2">
+                    spread2
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-spread2" name="spread2" type="number" step="any" placeholder="spread2">
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-D2">
+                    D2
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-D2" name="D2" type="number" step="any" placeholder="D2">
+            </div>
+            <div class="w-full md:w-full px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-PPE">
+                    PPE
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-PPE" name="PPE" type="number" step="any" placeholder="PPE">
+            </div>
+        </div>
+        <button class="bg-blue-500 my-4 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onclick="show()">Predict</button>
+        <p id="prediction" style="display: none;">{{ prediction_text }}</p>
+    </form>
+    <script>
+        function show() {
+            var prediction = document.querySelector("#prediction").textContent;
+            alert(prediction);
+
+        }
+    </script>
+</body>
+
+</html>
